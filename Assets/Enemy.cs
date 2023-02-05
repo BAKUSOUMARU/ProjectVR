@@ -1,0 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AI;
+
+
+public class Enemy : MonoBehaviour
+{
+    [SerializeField]
+    GameObject _player;
+
+    private NavMeshAgent _navMeshAgent;
+    
+    void Start()
+    {
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        _navMeshAgent.destination = _player.transform.position;
+    }
+}
