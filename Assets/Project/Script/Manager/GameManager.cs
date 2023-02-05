@@ -16,7 +16,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         if (IsGameFinish)
         {
-            
+            OnGameClear?.Invoke();
         }
     }
 }
