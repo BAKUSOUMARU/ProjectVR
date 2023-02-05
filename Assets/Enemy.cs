@@ -9,6 +9,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     GameObject _player;
 
+    [SerializeField]
+    float _stopPingDistance = 1.8f;
+
     private NavMeshAgent _navMeshAgent;
     
     void Start()
@@ -20,5 +23,6 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         _navMeshAgent.destination = _player.transform.position;
+        _navMeshAgent.stoppingDistance = _stopPingDistance;
     }
 }
