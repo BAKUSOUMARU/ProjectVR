@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     float _stopPingDistance = 1.8f;
-
+        
     private NavMeshAgent _navMeshAgent;
     
     void Start()
