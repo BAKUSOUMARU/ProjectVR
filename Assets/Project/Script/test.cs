@@ -18,23 +18,21 @@ public class test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Ray ray = new Ray(this.transform.position, this.transform.forward);
-        Debug.DrawRay(ray.origin, ray.direction * 10, Color.green, 5, false);
-
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
-        {
-            Debug.Log(hit.collider.gameObject.name);
-
-        }
-
-            if (_rayfireMan.storage.storageList.Count == 0)
-            return;
+        if (_rayfireMan.storage.storageList.Count == 0)
+        return;
         
         var i = _rayfireMan.storage.storageList.Count - 1;
         a= Å@_rayfireMan.storage.storageList[i].GetChild(0);
-
         
+        if (a.name == "Capsule"+ "_" + 0)
+        {
+            Debug.Log("Ç±Ç¡Çø");
+            Debug.Log(a.name);
+        }
+        else if (a.name == "Cube" + "_" + 0)
+        {
+            Debug.Log("Ç†Ç¡Çø");
+            Debug.Log(a.name);
+        }
     }
 }
