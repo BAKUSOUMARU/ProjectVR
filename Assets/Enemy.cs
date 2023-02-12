@@ -25,4 +25,9 @@ public class Enemy : MonoBehaviour
         _navMeshAgent.destination = _player.transform.position;
         _navMeshAgent.stoppingDistance = _stopPingDistance;
     }
+
+    private void OnDisable()
+    {
+        Debug.Log("切られた");
+    }
 }
