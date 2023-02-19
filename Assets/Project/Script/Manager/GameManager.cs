@@ -19,4 +19,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             OnGameClear?.Invoke();
         }
     }
+
+    public void GaneOver()
+    {
+        if (IsGameFinish)
+        {
+            OnGameOver?.Invoke();
+        }
+    }
 }

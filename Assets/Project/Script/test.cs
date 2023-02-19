@@ -22,17 +22,22 @@ public class test : MonoBehaviour
         return;
         
         var i = _rayfireMan.storage.storageList.Count - 1;
-        a= Å@_rayfireMan.storage.storageList[i].GetChild(0);
+        a= „ÄÄ_rayfireMan.storage.storageList[i].GetChild(0);
         
         if (a.name == "Capsule"+ "_" + 0)
         {
-            Debug.Log("Ç±Ç¡Çø");
+            Debug.Log("„Åì„Å£„Å°");
             Debug.Log(a.name);
         }
         else if (a.name == "Cube" + "_" + 0)
         {
-            Debug.Log("Ç†Ç¡Çø");
+            Debug.Log("„ÅÇ„Å£„Å°");
             Debug.Log(a.name);
         }
+    }
+
+    void aa()
+    {
+        _ = GameObject.CreatePrimitive(PrimitiveType.Cube);
     }
 }

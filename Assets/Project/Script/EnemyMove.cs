@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class Enemy : MonoBehaviour
+public class EnemyMove : MonoBehaviour
 {
     [SerializeField]
     GameObject _player;
+
+    [SerializeField]
+    float _moveSpeed = 5f;
 
     [SerializeField]
     float _stopPingDistance = 1.8f;
@@ -20,14 +23,20 @@ public class Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        _navMeshAgent.destination = _player.transform.position;
-        _navMeshAgent.stoppingDistance = _stopPingDistance;
+        Move();
     }
 
     private void OnDisable()
     {
         Debug.Log("切られた");
+    }
+
+    void Move()
+    {
+        _navMeshAgent.destination = _player.transform.position;
+        _navMeshAgent.speed = _moveSpeed;
+        _navMeshAgent.stoppingDistance = _stopPingDistance;
     }
 }
