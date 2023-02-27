@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
-
 public class EnemyMove : MonoBehaviour
 {
 
@@ -14,13 +10,10 @@ public class EnemyMove : MonoBehaviour
     float _stopPingDistance = 1.8f;
         
     private NavMeshAgent _navMeshAgent;
-
-    private Camera _playerCamera;
-
+    
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        _playerCamera = Camera.main;
     }
 
     // Update is called once per frame

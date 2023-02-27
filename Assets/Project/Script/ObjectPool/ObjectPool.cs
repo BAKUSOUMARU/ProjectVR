@@ -1,16 +1,13 @@
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
-
 public class ObjectPool : SingletonMonoBehaviour<ObjectPool>
 {
-    [FormerlySerializedAs("_objParams")] [SerializeField] 
+    [SerializeField]
     private ObjectPoolParams _objParam;
 
     [SerializeField] 
+    [Header("プールするプレハブの親のトランスフォーム")]
     private Transform _poolprefabPArent;
 
     private List<Pool> _pool = new List<Pool>();
@@ -20,7 +17,7 @@ public class ObjectPool : SingletonMonoBehaviour<ObjectPool>
     protected override void Awake()
     {
         base.Awake();
-        
+        CreatePool();
     }
 
     private void CreatePool()
