@@ -6,20 +6,21 @@ using UnityEngine.AI;
 
 public class EnemyMove : MonoBehaviour
 {
-    [SerializeField]
-    GameObject _player;
 
     [SerializeField]
-    float _moveSpeed = 5f;
+    private float _moveSpeed = 5f;
 
     [SerializeField]
     float _stopPingDistance = 1.8f;
         
     private NavMeshAgent _navMeshAgent;
-    
+
+    private Camera _playerCamera;
+
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _playerCamera = Camera.main;
     }
 
     // Update is called once per frame
@@ -35,7 +36,7 @@ public class EnemyMove : MonoBehaviour
 
     void Move()
     {
-        _navMeshAgent.destination = _player.transform.position;
+        _navMeshAgent.destination = PlayerTransform.Player.position;
         _navMeshAgent.speed = _moveSpeed;
         _navMeshAgent.stoppingDistance = _stopPingDistance;
     }
