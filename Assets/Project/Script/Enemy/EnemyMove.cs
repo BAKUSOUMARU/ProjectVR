@@ -10,6 +10,8 @@ public class EnemyMove : MonoBehaviour
     float _stopPingDistance = 1.8f;
         
     private NavMeshAgent _navMeshAgent;
+
+    private bool IsSopwn;
     
     void Start()
     {
@@ -24,7 +26,14 @@ public class EnemyMove : MonoBehaviour
 
     private void OnDisable()
     {
-        Debug.Log("切られた");
+        if (IsSopwn)
+        {
+            Debug.Log("切られた");
+            return;
+        }
+
+        IsSopwn = true;
+        Debug.Log("生まれた");
     }
 
     void Move()
