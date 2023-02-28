@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
@@ -16,15 +14,21 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         if (IsGameFinish)
         {
-            OnGameClear?.Invoke();
+            Debug.Log("すでにゲームがクリア又はゲームオーバーしているのGameClear()は呼び出せません");
+            return;
         }
+        IsGameFinish = true;
+        OnGameClear?.Invoke();
     }
 
     public void GaneOver()
     {
         if (IsGameFinish)
         {
-            OnGameOver?.Invoke();
+            Debug.Log("すでにゲームがクリア又はゲームオーバーしているのGaneOver()は呼び出せません");
+            return;
         }
+        IsGameFinish = true;
+        OnGameOver?.Invoke();
     }
 }
