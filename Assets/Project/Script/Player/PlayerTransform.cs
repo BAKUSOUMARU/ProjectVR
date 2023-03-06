@@ -9,11 +9,11 @@ namespace VRProject
 {
     public class PlayerTransform : MonoBehaviour
     {
-        public static Transform Player { get; private set; }
+        public static Transform Player { get; private set; } 
 
         [SerializeField] private Transform _player;
 
-        private void Awake()
+        private void FixedUpdate()
         {
             Player = _player;
         }
