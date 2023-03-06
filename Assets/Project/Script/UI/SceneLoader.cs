@@ -4,18 +4,21 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Valve.VR;
 
-public class SceneLoader : MonoBehaviour
+namespace VRProject
 {
-    [SerializeField] private string _sceneName = null; 
-    public void SceneChange()
+public class SceneLoader : MonoBehaviour
     {
-        if (_sceneName == null)
+        [SerializeField] private string _sceneName = null; 
+        public void SceneChange()
         {
-            Debug.Log("Sceneの名前が登録させてないよ");
-            return;
+            if (_sceneName == null)
+            {
+                Debug.Log("Sceneの名前が登録させてないよ");
+                return;
+            }
+            
+            SteamVR_Fade.Start(new Color(0, 0, 0, 1), 2);
+            SceneManager.LoadScene(_sceneName);
         }
-        
-        SteamVR_Fade.Start(new Color(0, 0, 0, 1), 2);
-        SceneManager.LoadScene(_sceneName);
     }
 }

@@ -3,16 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using VRProject;
 
-public class PlayerTransform : MonoBehaviour
+namespace VRProject
 {
-    public static Transform Player { get; private set; }
-
-    [SerializeField] private Transform _player;
-
-    private void Awake()
+    public class PlayerTransform : MonoBehaviour
     {
-        Player = _player;
+        public static Transform Player { get; private set; }
+
+        [SerializeField] private Transform _player;
+
+        private void Awake()
+        {
+            Player = _player;
+        }
     }
 }
 

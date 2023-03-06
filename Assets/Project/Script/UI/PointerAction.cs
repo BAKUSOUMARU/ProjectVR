@@ -1,56 +1,60 @@
+using Unity.VisualScripting;
 using Valve.VR.Extras;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PointerAction : MonoBehaviour
+namespace VRProject
 {
-    //右手用
-    public SteamVR_LaserPointer laserPointer;
-    //左手用
-    public SteamVR_LaserPointer laserPointer2;
-
-    void Awake()
+    public class PointerAction : MonoBehaviour
     {
-        laserPointer.PointerIn += PointerInside;
-        laserPointer.PointerOut += PointerOutside;
-        laserPointer.PointerClick += PointerClick;
-        laserPointer2.PointerIn += PointerInside;
-        laserPointer2.PointerOut += PointerOutside;
-        laserPointer2.PointerClick += PointerClick;
-    }
+        //右手用
+        public SteamVR_LaserPointer laserPointer;
+        //左手用
+        public SteamVR_LaserPointer laserPointer2;
 
-    //レーザーポインターをtargetに焦点をあわせてトリガーをひいたとき
-    public void PointerClick(object sender, PointerEventArgs e)
-    {
-        if (e.target.TryGetComponent(out Button test))
+        void Awake()
         {
-            test.onClick.Invoke();
-            Debug.Log("できた!");
+            laserPointer.PointerIn += PointerInside;
+            laserPointer.PointerOut += PointerOutside;
+            laserPointer.PointerClick += PointerClick;
+            laserPointer2.PointerIn += PointerInside;
+            laserPointer2.PointerOut += PointerOutside;
+            laserPointer2.PointerClick += PointerClick;
         }
-    }
 
-    //レーザーポインターがtargetに触れたとき
-    public void PointerInside(object sender, PointerEventArgs e)
-    {
-        if (e.target.TryGetComponent(out Button test))
+        //レーザーポインターをtargetに焦点をあわせてトリガーをひいたとき
+        public void PointerClick(object sender, PointerEventArgs e)
         {
-            ColorBlock colorBlock = new ColorBlock();
-            colorBlock.normalColor = Color.gray;
-            colorBlock.colorMultiplier = test.colors.colorMultiplier;
-            test.colors = colorBlock;
+            if (e.target.TryGetComponent(out Button test))
+            {
+                test.onClick.Invoke();
+                Debug.Log("できた!");
+            }
         }
-    }
 
-    //レーザーポインターがtargetから離れたとき
-    public void PointerOutside(object sender, PointerEventArgs e)
-    {
-        if (e.target.TryGetComponent(out Button test))
+        //レーザーポインターがtargetに触れたとき
+        public void PointerInside(object sender, PointerEventArgs e)
         {
-            ColorBlock colorBlock = new ColorBlock();
-            colorBlock.normalColor = Color.white;
-            colorBlock.colorMultiplier = test.colors.colorMultiplier;
-            test.colors = colorBlock;
+            if (e.target.TryGetComponent(out Button test))
+            {
+                ColorBlock colorBlock = new ColorBlock();
+                colorBlock.normalColor = Color.gray;
+                colorBlock.colorMultiplier = test.colors.colorMultiplier;
+                test.colors = colorBlock;
+            }
+        }
+
+        //レーザーポインターがtargetから離れたとき
+        public void PointerOutside(object sender, PointerEventArgs e)
+        {
+            if (e.target.TryGetComponent(out Button test))
+            {
+                ColorBlock colorBlock = new ColorBlock();
+                colorBlock.normalColor = Color.white;
+                colorBlock.colorMultiplier = test.colors.colorMultiplier;
+                test.colors = colorBlock;
+            }
         }
     }
 }

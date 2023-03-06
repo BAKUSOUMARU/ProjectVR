@@ -1,6 +1,9 @@
 using UnityEngine;
 using System;
 
+namespace VRProject
+{
+    
     public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
     {
         private static T instance;
@@ -45,3 +48,4 @@ using System;
             return false;
         }
     }
+}

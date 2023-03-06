@@ -1,34 +1,37 @@
 using System;
 using UnityEngine;
 
-public class GameManager : SingletonMonoBehaviour<GameManager>
+namespace VRProject
 {
-
-    public event Action OnGameClear;
-
-    public event Action OnGameOver;
-
-    private bool IsGameFinish;
-
-    public void GameClear()
+    public class GameManager : SingletonMonoBehaviour<GameManager>
     {
-        if (IsGameFinish)
-        {
-            Debug.Log("すでにゲームがクリア又はゲームオーバーしているのGameClear()は呼び出せません");
-            return;
-        }
-        IsGameFinish = true;
-        OnGameClear?.Invoke();
-    }
 
-    public void GaneOver()
-    {
-        if (IsGameFinish)
+        public event Action OnGameClear;
+
+        public event Action OnGameOver;
+
+        private bool IsGameFinish;
+
+        public void GameClear()
         {
-            Debug.Log("すでにゲームがクリア又はゲームオーバーしているのGaneOver()は呼び出せません");
-            return;
+            if (IsGameFinish)
+            {
+                Debug.Log("すでにゲームがクリア又はゲームオーバーしているのGameClear()は呼び出せません");
+                return;
+            }
+            IsGameFinish = true;
+            OnGameClear?.Invoke();
         }
-        IsGameFinish = true;
-        OnGameOver?.Invoke();
-    }
+
+        public void GaneOver()
+        {
+            if (IsGameFinish)
+            {
+                Debug.Log("すでにゲームがクリア又はゲームオーバーしているのGaneOver()は呼び出せません");
+                return;
+            }
+            IsGameFinish = true;
+            OnGameOver?.Invoke();
+        }
+}
 }
