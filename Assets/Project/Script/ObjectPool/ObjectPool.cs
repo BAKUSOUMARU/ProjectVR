@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace VRProject
 {
@@ -35,6 +36,10 @@ namespace VRProject
                 var Prefab = Instantiate(_objParam.Params[_poolCountIndex].Prefab, _poolprefabPArent.transform);
                 
                 Prefab.gameObject.SetActive(false);
+                if (Prefab.TryGetComponent(out NavMeshAgent navMeshAgent))
+                {
+                    navMeshAgent.enabled = true;
+                }
                 _pool.Add(new Pool{Prefab = Prefab, Name = _objParam.Params[_poolCountIndex].Name});
             }
 

@@ -11,6 +11,9 @@ namespace VRProject
 
         [SerializeField]
         float _stopPingDistance = 1.8f;
+
+        [SerializeField] 
+        private int _upGamepointCount = 1;
             
         private NavMeshAgent _navMeshAgent;
 
@@ -19,22 +22,17 @@ namespace VRProject
         void Start()
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
-        }
-
-        // Update is called once per frame
-        private void FixedUpdate()
-        {
             Move();
         }
-
+        
         private void OnDisable()
         {
             if (IsSopwn)
             {
                 Debug.Log("切られた");
+                GamePointManager.Instance.GamePointUp(_upGamepointCount);
                 return;
             }
-
             IsSopwn = true;
             Debug.Log("生まれた");
         }

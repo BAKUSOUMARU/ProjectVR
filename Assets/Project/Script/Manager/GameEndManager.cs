@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace VRProject
 {
     public class GameEndManager : MonoBehaviour
     {
         [SerializeField] 
-        private PlayerData _playerData;
+        private GamePointManager _gamePointManager;
 
         [SerializeField] 
         private int GameClearPoint;
